@@ -127,13 +127,14 @@ class WazeRouteCalculator(object):
         route_distance = distance / 1000.0
         return route_time, route_distance
 
-    def calc_route_info(self, real_time=True, stop_at_bounds=False, time_delta=0):
+    def calc_route_info(self, real_time=True, stop_at_bounds=False, time_delta=0,debug=False):
         """Calculate best route info."""
 
         route = self.get_route(1, time_delta)
         results = route['results']
         route_time, route_distance = self._add_up_route(results, real_time=real_time, stop_at_bounds=stop_at_bounds)
-        self.log.info('Time %.2f minutes, distance %.2f km.', route_time, route_distance)
+        if debug:
+            self.log.info('Time %.2f minutes, distance %.2f km.', route_time, route_distance)
         return route_time, route_distance
 
     def calc_all_routes_info(self, npaths=3, real_time=True, stop_at_bounds=False, time_delta=0):
