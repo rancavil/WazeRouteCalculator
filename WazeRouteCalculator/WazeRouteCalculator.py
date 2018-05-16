@@ -18,6 +18,32 @@ class WazeRouteCalculator(object):
 
     WAZE_URL = "https://www.waze.com/"
 
+    def getCoord(self,location):
+        if location == 'Enlace Costanera':
+             return {'lat' : -33.43731,  'lon' : -70.81306}
+        elif location == 'Casablanca':
+             return {'lat' : -33.33157,  'lon' :-71.38594 }
+        elif location == 'Valparaiso':
+             return {'lat' : -33.052973, 'lon' : -71.601227}
+        elif location == 'A. Vespucio':
+             return {'lat' : -33.490727, 'lon' : -71.601227}
+        elif location == 'Melipilla':
+             return {'lat' : -33.673829, 'lon' : -71.193956}
+        elif location == 'Buin':
+             return {'lat' : -33.734500 , 'lon' : -70.734535}
+        elif location == 'Rancagua':
+             return {'lat' : -34.034906, 'lon' : -70.705547}
+        elif location == 'San Fernando':
+             return {'lat' : -34.570228, 'lon' : -70.971885}
+        elif location == 'Enlace Quilicura':
+             return {'lat' : -33.366233, 'lon' : -70.699963}
+        elif location == 'La Calera':
+             return {'lat' : -32.788272, 'lon' : -71.168214}
+        elif location == 'Los Vilos':
+             return {'lat' : -31.914070, 'lon' : -71.489571}
+        else:
+             return None
+
     def __init__(self, start_address, end_address, region='EU', log_lvl=logging.INFO):
         self.log = logging.getLogger(__name__)
         if log_lvl is None:
@@ -32,10 +58,24 @@ class WazeRouteCalculator(object):
             region = 'US'
         self.region = region
 
-        self.start_coords = self.address_to_coords(start_address)
-        self.log.debug('Start coords: (%s, %s)', self.start_coords["lon"], self.start_coords["lat"])
-        self.end_coords = self.address_to_coords(end_address)
-        self.log.debug('End coords: (%s, %s)', self.end_coords["lon"], self.end_coords["lat"])
+        start = self.getCoord(start_address)
+        end = self.getCoord(end_address)
+        if start != None:
+             self.start_coords = {}
+             self.start_coords['lat'] = start['lat']
+             self.start_coords['lon'] = start['lon']
+             self.start_coords['bounds'] = {}
+        else:
+             self.start_coords = self.address_to_coords(start_address)
+             self.log.debug('Start coords: (%s, %s)', self.start_coords["lon"], self.start_coords["lat"])
+        if end != None:
+             self.end_coords = {}
+             self.end_coords['lat'] = end['lat']
+             self.end_coords['lon'] = end['lon']
+             self.end_coords['bounds'] = {}
+        else:
+             self.end_coords = self.address_to_coords(end_address)
+             self.log.debug('End coords: (%s, %s)', self.end_coords["lon"], self.end_coords["lat"])
 
     def address_to_coords(self, address):
         """Convert address to coordinates"""
@@ -64,6 +104,7 @@ class WazeRouteCalculator(object):
             bounds['left'], bounds['right'] = min(bounds['left'], bounds['right']), max(bounds['left'], bounds['right'])
         else:
             bounds = {}
+
         return {"lon": lon, "lat": lat, "bounds": bounds}
 
     def get_route(self, npaths=1, time_delta=0):
