@@ -19,28 +19,78 @@ class WazeRouteCalculator(object):
     WAZE_URL = "https://www.waze.com/"
 
     def getCoord(self,location):
-        if location == 'Enlace Costanera':
-             return {'lat' : -33.43731,  'lon' : -70.81306}
-        elif location == 'Casablanca':
-             return {'lat' : -33.33157,  'lon' :-71.38594 }
-        elif location == 'Valparaiso':
-             return {'lat' : -33.052973, 'lon' : -71.601227}
-        elif location == 'A. Vespucio':
-             return {'lat' : -33.490727, 'lon' : -71.601227}
-        elif location == 'Melipilla':
+        # Salida
+        # Ruta 68
+        if location == 'S Enlace Costanera':
+             return {'lat' : -33.43937,  'lon' : -70.8115}
+        elif location == 'S Casablanca':
+             return {'lat' : -33.34095,  'lon' : -71.36541}
+        elif location == 'S Casablanca 2':
+             return {'lat' : -33.34052,  'lon' : -71.36633}
+        elif location == 'S Valparaiso':
+             return {'lat' : -33.05235, 'lon' : -71.60179}
+
+        # Ruta 78
+        elif location == 'S A. Vespucio':
+             return {'lat' : -33.48999, 'lon' : -70.74852}
+        elif location == 'S Melipilla':
              return {'lat' : -33.673829, 'lon' : -71.193956}
-        elif location == 'Buin':
-             return {'lat' : -33.734500 , 'lon' : -70.734535}
-        elif location == 'Rancagua':
-             return {'lat' : -34.034906, 'lon' : -70.705547}
-        elif location == 'San Fernando':
-             return {'lat' : -34.570228, 'lon' : -70.971885}
-        elif location == 'Enlace Quilicura':
-             return {'lat' : -33.366233, 'lon' : -70.699963}
-        elif location == 'La Calera':
-             return {'lat' : -32.788272, 'lon' : -71.168214}
-        elif location == 'Los Vilos':
-             return {'lat' : -31.914070, 'lon' : -71.489571}
+
+        # Ruta 5 Sur
+        elif location == 'S Buin':
+             return {'lat' : -33.70142, 'lon' : -70.72252}
+        elif location == 'S Rancagua':
+             return {'lat' : -34.02946, 'lon' : -70.70498}
+        elif location == 'S Rancagua 2':
+             return {'lat' : -34.02909, 'lon' : -70.70495}
+        elif location == 'S San Fernando':
+             return {'lat' : -34.57059, 'lon' : -70.97201}
+
+        # Ruta 5 Norte
+        elif location == 'S Enlace Quilicura':
+             return {'lat' : -33.36821, 'lon' : -70.69922}
+        elif location == 'S La Calera':
+             return {'lat' : -32.78643, 'lon' : -71.17015}
+        elif location == 'S La Calera 2':
+             return {'lat' : -32.78708, 'lon' : -71.16934}
+        elif location == 'S Los Vilos':
+             return {'lat' : -33.36821, 'lon' : -70.69922}
+        # Retorno
+        # Ruta 68
+        elif location == 'R Enlace Costanera':
+             return {'lat' : -70.81089,  'lon' : -33.43964}
+        elif location == 'R Casablanca':
+             return {'lat' : -33.34079, 'lon' : -71.36595}
+        elif location == 'R Casablanca 2':
+             return {'lat' : -33.34083, 'lon' : -71.36589}
+        elif location == 'R Valparaiso':
+             return {'lat' : -33.05236, 'lon' : -71.60216}
+
+        # Ruta 78
+        elif location == 'R A. Vespucio':
+             return {'lat' : -33.48967, 'lon' : -70.74793}
+        elif location == 'R Melipilla':
+             return {'lat' : -33.67308, 'lon' : -71.20159}
+
+        # Ruta 5 Sur
+        elif location == 'R Buin':
+             return {'lat' : -33.70109, 'lon' : -70.72218}
+        elif location == 'R Rancagua':
+             return {'lat' : -34.02954, 'lon' : -70.70485}
+        elif location == 'R Rancagua 2':
+             return {'lat' : -34.02905, 'lon' : -70.70472}
+        elif location == 'R San Fernando':
+             return {'lat' : -34.57023, 'lon' : -70.97171}
+
+        # Ruta 5 Norte
+        elif location == 'R Enlace Quilicura':
+             return {'lat' : -33.36737, 'lon' : -70.6999}
+        elif location == 'R La Calera':
+             return {'lat' : -32.77123, 'lon' :-71.18893}
+        elif location == 'R La Calera 2':
+             return {'lat' : -32.7873, 'lon' : -71.16949}
+        elif location == 'R Los Vilos':
+             return {'lat' : -31.91833, 'lon' : -71.48913}
         else:
              return None
 
