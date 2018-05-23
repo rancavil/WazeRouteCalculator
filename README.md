@@ -101,5 +101,15 @@ from_address = 'Budapest, Hungary'
 to_address = 'Gyor, Hungary'
 route = WazeRouteCalculator.WazeRouteCalculator(from_address, to_address, log_lvl=None)
 route_time, route_distance = route.calc_route_info()
-print 'Time %.2f minutes, distance %.2f km.' % (route_time, route_distance)
+print('Time %.2f minutes, distance %.2f km.' % (route_time, route_distance))
+```
+
+### Using coords tuples.
+```python
+import WazeRouteCalculator
+
+from_address = (-33.43937,-70.8115) # From Santiago, Chile
+to_address = (-33.05235,-71.60179)  # To Valparaiso, Chile
+route = WazeRouteCalculator.WazeRouteCalculator(from_address, to_address, log_lvl='INFO')
+route_time, route_distance = route.calc_route_info()
 ```
